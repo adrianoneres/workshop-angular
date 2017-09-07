@@ -12,7 +12,6 @@ export class PessoaListar {
     pessoas: Pessoa[] = [];
 
     constructor(private _service: PessoaService ) { 
-        console.log('Foi!');
         this._service.listar().subscribe(pessoas => {
             this.pessoas = pessoas;
         })
