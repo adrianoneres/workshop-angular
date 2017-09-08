@@ -12,14 +12,24 @@ export class PessoaService {
         this.headers.append('Content-Type', 'application/json');
     }
 
+    buscar(id): Observable<Pessoa> {
+        var url = 'https://sup-api.herokuapp.com/people/' + id;
+        return this._http.get(url).map(res => res.json());
+    }
+
     listar() {
         var url = 'https://sup-api.herokuapp.com/people';
         return this._http.get(url).map(res => res.json());
     }
 
     salvar(pessoa: Pessoa): Observable<Response> {
-        var url = "https://sup-api.herokuapp.com/people"; 
-        return this._http.post(url, JSON.stringify(pessoa), {headers: this.headers});
+        if (pessoa.id) {
+            var url = "https://sup-api.herokuapp.com/people/" + pessoa.id; 
+            return this._http.put(url, JSON.stringify(pessoa), {headers: this.headers});
+        } else {
+            var url = "https://sup-api.herokuapp.com/people"; 
+            return this._http.post(url, JSON.stringify(pessoa), {headers: this.headers});
+        }
     }
 
     excluir(id): Observable<Response> {
