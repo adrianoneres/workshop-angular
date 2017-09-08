@@ -1,0 +1,60 @@
+
+<div class="container">
+    <h1>Pessoa</h1>
+    <form [formGroup]="form" (submit)="salvar($event)">
+        <div class="row">
+            <div class="col s8">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input  type="text" 
+                            name="nome"
+                            class="form-control"
+                            formControlName="nome"
+                            [(ngModel)]="pessoa.name">
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input  type="text" 
+                            name="cpf"
+                            class="form-control"
+                            formControlName="cpf"
+                            [(ngModel)]="pessoa.register">
+                </div>
+
+                <div class="form-group">
+                    <label for="nascimento">Data de nascimento</label>
+                    <input  type="text" 
+                            name="nascimento"
+                            class="datepicker"
+                            formControlName="nascimento"
+                            materialize="pickadate"
+                            [(ngModel)]="pessoa.birth">
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <input  type="text" 
+                            name="photo"
+                            class="form-control"
+                            formControlName="photo"
+                            [(ngModel)]="pessoa.photo">
+                </div>
+
+                <div class="form-group">
+                    <label for="nascimento">Bio</label>
+                    <textarea   name="bio"
+                                class="materialize-textarea"
+                                formControlName="bio"
+                                [(ngModel)]="pessoa.bio">
+                    </textarea>
+                </div>
+            </div>
+            <div class="col s4">
+                <img [src]="pessoa.photo" class="foto-pessoa"/> 
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>

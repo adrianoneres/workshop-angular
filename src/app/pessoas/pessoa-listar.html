@@ -1,12 +1,21 @@
+<a [routerLink]="['/pessoas/form']" class="btn btn-primary">Adicionar</a>
 <table>
     <thead>
         <tr>
             <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de nascimento</th>
+            <th>Bio</th>
+            <th>Ação</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let pessoa of pessoas">
             <td>{{pessoa.name}}</td>
+            <td>{{pessoa.register}}</td>
+            <td>{{pessoa.birth}}</td>
+            <td>{{pessoa.bio}}</td>
+            <td><button class="btn primary red" (click)="excluir(pessoa.id)">Excluir</button></td>
         </tr>
     </tbody>
 </table>
